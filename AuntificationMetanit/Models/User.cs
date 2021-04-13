@@ -22,6 +22,10 @@ namespace AuntificationMetanit.Models
         public string Password { get; set; }
 
         public List<Record> records { get; set; }
+        public User()
+        {
+            records = new List<Record>();
+        }
 
         
     }

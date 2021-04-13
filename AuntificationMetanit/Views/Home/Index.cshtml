@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<Record> 
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -6,3 +7,19 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<a asp-action="CreateRecord" asp-controller="Home">Создать запись</a><br />
+
+<p>@ViewBag.IUser</p><br />
+
+
+<table>
+    @if(Model != null)
+    @foreach(var value in Model)
+    {
+        <tr>
+            <td>@value.Theme</td>
+            <td>@value.DateBegin</td>
+        </tr>
+    }
+</table>

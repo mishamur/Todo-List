@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using AuntificationMetanit.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using AuntificationMetanit.Infrastructure;
 
 namespace AuntificationMetanit
 {
@@ -34,7 +35,10 @@ namespace AuntificationMetanit
                     options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
                 });
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews(opts =>
+            {
+                opts.ModelBinderProviders.Insert(0, new CustomDateTimeModelBinderProvider());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
