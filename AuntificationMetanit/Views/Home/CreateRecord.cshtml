@@ -1,27 +1,72 @@
 ﻿@model AuntificationMetanit.Models.Record
 
-@{ 
+@{
     ViewData["Title"] = "Создать запись";
+   
 }
 
-<h2>Создайте запись</h2>
+@{
+    
+    <h2>Создайте запись</h2>
 
-<form asp-action="CreateRecord" asp-controller="Home" asp-antiforgery="true">
-    <div>
-        <div class="form-group">
-            <label asp-for="Theme" class="form-group">Введите тему: </label>
-            <input type="text" asp-for="Theme" class=" form-group" />
-            <!----<span asp-validation-for="Theme"></span>--->
-        </div>
+    <form asp-action="CreateRecord" asp-controller="Home" asp-antiforgery="true">
+        <div>
+            <div class="form-group">
+                <label asp-for="Theme" class="form-group">Введите тему: </label>
+                <input type="text" asp-for="Theme" class=" form-group" />
+                <!----<span asp-validation-for="Theme"></span>--->
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class=" form-group">
+                            <label asp-for="DateBegin">Введите дату: </label>
+                            <input type="text" asp-for="DateBegin" class=" form-control" id="datetimepicker2" />
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <div class=" form-group">
-            <label asp-for="DateBegin">Введите дату: </label>
-            <input type="datetime" asp-for="DateBegin" class=" form-group" />
-        </div>
+            <div class=" form-group">
+                <input type="submit" value="Отправить" />
+            </div>
 
-        <div class=" form-group">
-            <input type="submit" value="Отправить" />
         </div>
-        
-    </div>
 </form>
+      
+}
+
+
+
+
+
+
+
+
+
+
+
+   
+  
+
+
+    <script src="~/amy/js/jquery-3.2.1.min.js"></script>
+    <script src="~/amy/js/moment-with-locales.min.js"></script>
+    <script src="~/amy/js/bootstrap.min.js"></script>
+    <script src="~/amy/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker1').datetimepicker({
+                locale: 'ru',
+                stepping: 10,
+                format: 'DD.MM.YYYY',
+                defaultDate: moment('01.11.2017').format('DD.MM.YYYY'),
+                daysOfWeekDisabled: [0, 6]
+            });
+            $('#datetimepicker2').datetimepicker({
+                locale: 'ru'
+            });
+        });
+    </script>
+
+

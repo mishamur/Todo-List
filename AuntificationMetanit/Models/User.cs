@@ -21,10 +21,10 @@ namespace AuntificationMetanit.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        public List<Record> records { get; set; }
+        public List<Record> Records { get; set; }
         public User()
         {
-            records = new List<Record>();
+            Records = new List<Record>();
         }
 
         

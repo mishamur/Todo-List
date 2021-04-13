@@ -25,9 +25,11 @@ namespace AuntificationMetanit.Controllers
             User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
             ViewBag.IUser = User.Identity.Name;
             if(user != null)
-            {   
-                
-                    return View(user.records.ToList());
+            {
+
+               // var rec = user.Records.ToList();    
+                var rec = db.Records.Where(p => p.UserId == user.UserId).ToList();
+                return View(rec);
 
             }
                 
@@ -53,9 +55,11 @@ namespace AuntificationMetanit.Controllers
         {
             if(record != null)
             {
-                record.RecordId = Guid.NewGuid();
+                //record.RecordId = Guid.NewGuid();
                 User user = await db.Users.FirstOrDefaultAsync(u => u.Email == User.Identity.Name);
-                user.records.Add(record);
+             //   record.UserId = user.UserId;
+                user.Records.Add(record);
+                
                 db.Users.Update(user);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
