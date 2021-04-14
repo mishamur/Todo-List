@@ -19,7 +19,5 @@ namespace AuntificationMetanit.Models
        public DateTime DateBegin { get; set; }
 
 
-
-
     }
 }

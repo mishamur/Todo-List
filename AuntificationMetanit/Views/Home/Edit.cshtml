@@ -1,18 +1,18 @@
 ﻿@model AuntificationMetanit.Models.Record
 
 @{
-    ViewData["Title"] = "Создать запись";
-   
+    ViewData["Title"] = "Редактировать запись";
+
 }
 
 @{
-    
+
     <h2>Создайте запись</h2>
 
-    <form asp-action="CreateRecord" asp-controller="Home" asp-antiforgery="true">
+    <form asp-action="CreateRecord" asp-controller="Home" asp-antiforgery="true" asp-route-RecordId="@Model.RecordId">
         <div>
             <div class="form-group">
-                <label asp-for="Theme" class="form-group">Введите тему: </label>
+                <label asp-for="Theme" class="form-group">Редактировать тему: </label>
                 <input type="text" asp-for="Theme" class=" form-group" />
                 <!----<span asp-validation-for="Theme"></span>--->
             </div>
@@ -20,7 +20,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class=" form-group">
-                            <label asp-for="DateBegin">Введите дату: </label>
+                            <label asp-for="DateBegin">Редактировать дату: </label>
                             <input type="text" asp-for="DateBegin" class=" form-control" id="datetimepicker2" />
                         </div>
                     </div>
@@ -32,16 +32,16 @@
             </div>
 
         </div>
-</form>
-      
+    </form>
+
 }
 
 
 
-    <script src="~/amy/js/jquery-3.2.1.min.js"></script>
-    <script src="~/amy/js/moment-with-locales.min.js"></script>
-    <script src="~/amy/js/bootstrap.min.js"></script>
-    <script src="~/amy/js/bootstrap-datetimepicker.min.js"></script>
-   
+<script src="~/amy/js/jquery-3.2.1.min.js"></script>
+<script src="~/amy/js/moment-with-locales.min.js"></script>
+<script src="~/amy/js/bootstrap.min.js"></script>
+<script src="~/amy/js/bootstrap-datetimepicker.min.js"></script>
+
 
 

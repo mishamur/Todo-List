@@ -44,6 +44,21 @@
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
+            <script type="text/javascript">
+                $(function () {
+                    $('#datetimepicker1').datetimepicker({
+                        locale: 'ru',
+                        stepping: 10,
+                        format: 'DD.MM.YYYY',
+                        defaultDate: moment('01.11.2017').format('DD.MM.YYYY'),
+                        daysOfWeekDisabled: [0, 6]
+                    });
+                    $('#datetimepicker2').datetimepicker({
+                        locale: 'ru'
+                    });
+                });
+            </script>
+
         </main>
     </div>
 
@@ -60,6 +75,7 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
+  
     <script src="~/amy/js/jquery-3.2.1.min.js"></script>
     <script src="~/amy/js/moment-with-locales.min.js"></script>
     <script src="~/amy/js/bootstrap.min.js"></script>

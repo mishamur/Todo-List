@@ -66,6 +66,61 @@ namespace AuntificationMetanit.Controllers
             }
             return RedirectToAction("Index");
         }
-       
+
+        [Authorize]
+        public async Task<IActionResult> Edit(Guid? RecordId)
+        {
+            if(RecordId != null)
+            {
+                Record record = await db.Records.FirstOrDefaultAsync(r => r.RecordId == RecordId);
+                if (record != null)
+                    return View(record);
+            }
+            return NotFound();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> Edit(Record record)
+        {
+            db.Records.Update(record);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+
+        [Authorize]
+        [HttpGet]
+        [ActionName("Delete")]
+        public async Task<IActionResult> ConfirmDelete(Guid? RecordId)
+        {
+            if(RecordId != null)
+            {
+                Record record = await db.Records.FirstOrDefaultAsync(r => r.RecordId == RecordId);
+                if (record != null)
+                    return View(record);
+            }
+            return NotFound();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> Delete(Guid? RecordId)
+        {
+            if(RecordId != null)
+            {
+                Record record = await db.Records.FirstOrDefaultAsync(r => r.RecordId == RecordId);
+                if(record != null)
+                {
+                    db.Records.Remove(record);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
+            }
+            return NotFound();
+
+        }
+
+
+
     }
 }
