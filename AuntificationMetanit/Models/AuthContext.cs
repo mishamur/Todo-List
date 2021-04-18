@@ -10,8 +10,12 @@ namespace AuntificationMetanit.Models
     {
 
         public DbSet<User> Users { get; set; }
+        //Запись(Памятка)
         public DbSet<Record> Records { get; set; }
-
+        //Встреча
+        public DbSet<Meeting> Meetings { get; set; }
+        //Дело
+        public DbSet<Case> Cases { get; set; }
         public AuthContext(DbContextOptions<AuthContext> options) :  base(options)
         {
            Database.EnsureCreated();

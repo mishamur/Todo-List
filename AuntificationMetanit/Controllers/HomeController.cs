@@ -46,18 +46,23 @@ namespace AuntificationMetanit.Controllers
         [Authorize]
         public IActionResult CreateRecord()
         {
+             
             return View();
         }
 
+        
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> CreateRecord(Record record)
         {
             if(record != null)
             {
-                //record.RecordId = Guid.NewGuid();
+            
                 User user = await db.Users.FirstOrDefaultAsync(u => u.Email == User.Identity.Name);
-             //   record.UserId = user.UserId;
+                if(record is Meeting)
+                {
+                    record =(Meeting) record;
+                }
                 user.Records.Add(record);
                 
                 db.Users.Update(user);
@@ -66,6 +71,31 @@ namespace AuntificationMetanit.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        [Authorize]
+        public IActionResult CreateMeeting()
+        {
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> CreateMeeting(Meeting meeting)
+        {
+            if (meeting != null)
+            {
+                User user = await db.Users.FirstOrDefaultAsync(u => u.Email == User.Identity.Name);
+                
+                user.Records.Add(meeting);
+                meeting.Discriminator = "Meeting";
+
+                db.Users.Update(user);
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
+        }
+
 
         [Authorize]
         public async Task<IActionResult> Edit(Guid? RecordId)
@@ -83,6 +113,7 @@ namespace AuntificationMetanit.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(Record record)
         {
+            
             db.Records.Update(record);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");

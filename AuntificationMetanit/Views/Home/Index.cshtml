@@ -4,17 +4,24 @@
 }
 
 
-<a asp-action="CreateRecord" asp-controller="Home">Создать запись</a><br />
+
+<a asp-action="CreateRecord" asp-controller="Home">Создать запись</a>
+<a asp-action="CreateMeeting" asp-controller="Home">Добавить встречу</a>
+<a asp-action="CreateCase" asp-controller="Home">Добавить дело</a>
 
 <p>@ViewBag.IUser</p><br />
 
 
 <table class="table">
-    @foreach(var value in Model)
+    @foreach (var value in Model)
     {
+
         <tr>
-            <td>@value.Theme</td>
-            <td>@value.DateBegin</td>
+            <td>@value.Discriminator</td>
+            @value.GetInfo()
+            
+            
+            
             <td>
                 <a asp-action="Edit" asp-controller="Home" asp-route-RecordId="@value.RecordId">Изменить</a>
                 <a asp-action="Delete" asp-controller="Home" asp-route-RecordId="@value.RecordId">Удалить</a>
