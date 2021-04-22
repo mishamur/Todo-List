@@ -115,7 +115,7 @@ namespace AuntificationMetanit.Controllers
         {
             
             db.Records.Update(record);
-            await db.SaveChangesAsync();
+            await db.SaveChangesAsync(); 
             return RedirectToAction("Index");
         }
 
