@@ -15,10 +15,10 @@ namespace AuntificationMetanit.Models
             return $"Тема: {Theme}  Дата окончания: {DateEnd}    Дата начала: {DateBegin}";
         }
 
-        public new HtmlString GetInfo()
+        public override HtmlString GetInfo()
         {
             return new HtmlString($"<td>Тема: {Theme} </td> <td>Дата начала: {DateBegin.ToString("f")} </td>" +
-                $"<td>Дата начала: {DateEnd.ToString("f")} </td>");
+                $"<td>Дата окончания: {DateEnd.ToString("f")} </td>");
         }
 
     }

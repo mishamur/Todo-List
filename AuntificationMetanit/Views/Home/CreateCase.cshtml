@@ -1,20 +1,15 @@
-﻿@model AuntificationMetanit.Models.Meeting
+﻿@model AuntificationMetanit.Models.Case
 
 @{
-    ViewData["Title"] = "Добавить встречу";
+    ViewData["Title"] = "Создать дело";
 }
 
 
-<form asp-action="CreateMeeting" asp-controller="Home" asp-antiforgery="true">
+<form asp-action="CreateCase" asp-controller="Home" asp-antiforgery="true">
 
     <div class="form-group">
         <label asp-for="Theme" class="form-group">Тема</label>
         <input type="text" asp-for="Theme" class="form-control" />
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Place" class="form-group">Место</label>
-        <input type="text" asp-for="Place" class="form-control" />
     </div>
 
     <div class="container">

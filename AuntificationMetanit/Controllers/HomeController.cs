@@ -82,16 +82,34 @@ namespace AuntificationMetanit.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateMeeting(Meeting meeting)
         {
-            if (meeting != null)
+
+            if(meeting != null)
             {
                 User user = await db.Users.FirstOrDefaultAsync(u => u.Email == User.Identity.Name);
-                
                 user.Records.Add(meeting);
-                meeting.Discriminator = "Meeting";
-
-                db.Users.Update(user);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+            }
+
+            return RedirectToAction("Index");
+
+        }
+
+        [Authorize]
+        public IActionResult CreateCase()
+        {
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> CreateCase(Case cases)
+        {
+            if(cases != null)
+            {
+                User user = await db.Users.FirstOrDefaultAsync(u => u.Email == User.Identity.Name);
+                user.Records.Add(cases);
+                await db.SaveChangesAsync();
+
             }
             return RedirectToAction("Index");
         }
