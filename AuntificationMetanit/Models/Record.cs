@@ -25,7 +25,6 @@ namespace AuntificationMetanit.Models
         [Display(Name = "Дата начала")]
         public DateTime DateBegin { get; set; }
 
-        [UIHint("HiddenInput")]
         [ScaffoldColumn(false)]
         public string Discriminator { get; set; }
         public override string ToString()

@@ -8,33 +8,43 @@
 
 
 <h2>Редактируйте запись</h2>
+@*
 
-    <form asp-action="CreateRecord" asp-controller="Home" asp-antiforgery="true" asp-route-RecordId="@Model.RecordId">
-        <div>
-            <div class="form-group">
-                <label asp-for="Theme" class="form-group">Редактировать тему: </label>
-                <input type="text" asp-for="Theme" class=" form-group" />
-                <!----<span asp-validation-for="Theme"></span>--->
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class=" form-group">
-                            <label asp-for="DateBegin">Редактировать дату: </label>
-                            <input type="text" asp-for="DateBegin" class=" form-control" id="datetimepicker2" />
-                        </div>
+<form asp-action="CreateRecord" asp-controller="Home" asp-antiforgery="true" asp-route-RecordId="@Model.RecordId">
+    <div>
+        <div class="form-group">
+            <label asp-for="Theme" class="form-group">Редактировать тему: </label>
+            <input type="text" asp-for="Theme" class=" form-group" />
+            <!----<span asp-validation-for="Theme"></span>--->
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class=" form-group">
+                        <label asp-for="DateBegin">Редактировать дату: </label>
+                        <input type="text" asp-for="DateBegin" class=" form-control" id="datetimepicker2" />
                     </div>
                 </div>
             </div>
-
-            <div class=" form-group">
-                <input type="submit" value="Отправить" />
-            </div>
-
         </div>
-    </form>
 
+        <div class=" form-group">
+            <input type="submit" value="Отправить" />
+        </div>
 
+    </div>
+</form>
+
+*@
+
+@using (Html.BeginForm())
+{
+    @Html.EditorForModel()
+    <input asp-for="UserId" type="hidden">
+    <input asp-for="Discriminator" type="hidden">
+    <input type="submit" value="Сохранить" />
+    @Html.ActionLink("Отменить изменения и вернуться к списку", "Index")
+}
 
 <script src="~/amy/js/jquery-3.2.1.min.js"></script>
 <script src="~/amy/js/moment-with-locales.min.js"></script>

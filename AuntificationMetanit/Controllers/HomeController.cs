@@ -132,9 +132,16 @@ namespace AuntificationMetanit.Controllers
         public async Task<IActionResult> Edit(Record record)
         {
             
-            db.Records.Update(record);
-            await db.SaveChangesAsync(); 
+            if(record != null)
+            {
+                
+
+                db.Records.Update(record);
+                await db.SaveChangesAsync();
+
+            }
             return RedirectToAction("Index");
+
         }
 
         [Authorize]
