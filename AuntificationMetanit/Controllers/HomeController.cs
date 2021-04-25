@@ -144,7 +144,10 @@ namespace AuntificationMetanit.Controllers
         {
             if(RecordId != null)
             {
-                Record record = await db.Records.FirstOrDefaultAsync(r => r.RecordId == RecordId);
+                User user = await db.Users.FirstOrDefaultAsync(u => u.Email == User.Identity.Name);
+
+                Record record = await db.Records.FirstOrDefaultAsync(r => r.RecordId == RecordId &&
+                r.UserId == user.UserId);
                 if (record != null)
                     return View(record);
             }

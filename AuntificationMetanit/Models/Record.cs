@@ -11,15 +11,23 @@ namespace AuntificationMetanit.Models
     public class Record
     {
         [Key]
+        [ScaffoldColumn(false)]
         public Guid RecordId { get; set; }
 
         [ForeignKey("UserInfo")]
-        public Guid UserId { get; set; } 
+        [ScaffoldColumn(false)]
+        public Guid UserId { get; set; }
 
-       public string Theme { get; set; }
-       public DateTime DateBegin { get; set; }
 
-       public string Discriminator { get; set; }
+        [Display(Name = "Тема")]
+        public string Theme { get; set; }
+
+        [Display(Name = "Дата начала")]
+        public DateTime DateBegin { get; set; }
+
+        [UIHint("HiddenInput")]
+        [ScaffoldColumn(false)]
+        public string Discriminator { get; set; }
         public override string ToString()
         {
            return $"Тема: {Theme}      Дата начала: {DateBegin}";

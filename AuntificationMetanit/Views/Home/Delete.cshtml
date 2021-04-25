@@ -18,7 +18,11 @@
     </table>
 
     <div>
-        <form asp-controller="Home" asp-action="Delete" method="post" asp-route-RecordId="@Model.RecordId">
+        
+
+        <form asp-controller="Home" asp-action="Delete" method="post">
+            <input type="hidden" asp-for="RecordId" />
+
             <div class="form-group">
                 <input type="submit" class="btn btn-default" value="Удалить" />
             </div>
