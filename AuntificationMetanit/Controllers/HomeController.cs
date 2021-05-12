@@ -20,16 +20,26 @@ namespace AuntificationMetanit.Controllers
         }
        
         [Authorize]
-        public IActionResult Index()
+        public async Task<IActionResult> Index(SortState sortState = SortState.DateAsc)
         {
             User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
             ViewBag.IUser = User.Identity.Name;
             if(user != null)
             {
+                //var rec = db.Records.Where(p => p.UserId == user.UserId).ToList();
+                IQueryable<Record> rec = db.Records.Where(p => p.UserId == user.UserId);
+                
+                ViewData["DateSort"] = sortState == SortState.DateAsc ? SortState.DateDesc : SortState.DateAsc;
+               
+                rec = sortState switch
+                {
+                    SortState.DateDesc => rec.OrderByDescending(r => r.DateBegin),
+                    SortState.DateAsc => rec.OrderBy(r => r.DateBegin),
+                    _ => rec.OrderBy(r => r.DateBegin),
+                };
 
                // var rec = user.Records.ToList();    
-                var rec = db.Records.Where(p => p.UserId == user.UserId).ToList();
-                return View(rec);
+                return View(await rec.AsNoTracking().ToListAsync());
 
             }
                 
@@ -129,15 +139,50 @@ namespace AuntificationMetanit.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Edit(Record record)
+        public async Task<IActionResult> Edit(Meeting record)
         {
+
             
             if(record != null)
             {
-                
 
-                db.Records.Update(record);
-                await db.SaveChangesAsync();
+                if (record.Discriminator == "Record")
+                {
+                    Record record1 = new Record
+                    {
+                        DateBegin = record.DateBegin,
+                        Discriminator = record.Discriminator,
+                        RecordId = record.RecordId,
+                        Theme = record.Theme,
+                        UserId = record.UserId
+                    };
+                    db.Records.Update(record1);
+                    await db.SaveChangesAsync();
+
+                }
+                else if (record.Discriminator == "Case")
+                {
+                    Case cases = new Case
+                    {
+                        DateBegin = record.DateBegin,
+                        Discriminator = record.Discriminator,
+                        RecordId = record.RecordId,
+                        Theme = record.Theme,
+                        UserId = record.UserId,
+                        DateEnd = record.DateEnd
+                       
+                    };
+                    db.Records.Update(cases);
+                    await db.SaveChangesAsync();
+
+                }
+                else
+                {
+                    db.Records.Update(record);
+                    await db.SaveChangesAsync();
+
+                }
+
 
             }
             return RedirectToAction("Index");

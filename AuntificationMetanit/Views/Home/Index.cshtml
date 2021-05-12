@@ -13,6 +13,15 @@
 
 
 <table class="table">
+    <tr>
+        <th>Сортировка:</th>
+        <th>
+            дата окончания
+        </th>
+        <th>
+            <a asp-action="Index" asp-controller="Home" asp-route-sortState="@ViewBag.DateSort">дата начала</a>
+        </th>
+    </tr>
     @foreach (var value in Model)
     {
 
