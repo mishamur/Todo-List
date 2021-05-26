@@ -11,16 +11,37 @@
 
 <p>@ViewBag.IUser</p><br />
 
+<div>
+    <form method="get">
+        <div class="form-inline form-group">
+            <label class="control-label">Тема: </label>
+            <input name="theme" class="form-control" />
+
+            <input type="submit" value="Фильтр" class="btn btn-default" />
+        </div>
+    </form>
+
+
+    <form method="get">
+
+        <input type ="hidden" name="theme" value="" />
+        <input type="submit" value="Сбросить фильтр" class="btn btn-default" />
+    </form>
+
+</div>
+
 
 <table class="table">
     <tr>
-        <th>Сортировка:</th>
-        <th>
-            дата окончания
-        </th>
+        <th>Тип</th>
+        <th>Тема</th>
         <th>
             <a asp-action="Index" asp-controller="Home" asp-route-sortState="@ViewBag.DateSort">дата начала</a>
         </th>
+        <th>
+            дата окончания
+        </th>
+
     </tr>
     @foreach (var value in Model)
     {

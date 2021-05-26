@@ -18,9 +18,9 @@ namespace AuntificationMetanit.Controllers
         {
             db = context;
         }
-       
+
         [Authorize]
-        public async Task<IActionResult> Index(SortState sortState = SortState.DateAsc)
+        public async Task<IActionResult> Index(string theme, SortState sortState = SortState.DateAsc)
         {
             User user = db.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
             ViewBag.IUser = User.Identity.Name;
@@ -37,15 +37,20 @@ namespace AuntificationMetanit.Controllers
                     SortState.DateAsc => rec.OrderBy(r => r.DateBegin),
                     _ => rec.OrderBy(r => r.DateBegin),
                 };
+                // var rec = user.Records.ToList();    
+                List<Record> records = await rec.AsNoTracking().ToListAsync();
 
-               // var rec = user.Records.ToList();    
-                return View(await rec.AsNoTracking().ToListAsync());
+                if (!String.IsNullOrEmpty(theme))
+                {
+                    records = records.Where(r => r.Theme.Contains(theme)).ToList<Record>();
+                }
 
+                return View(records);
             }
-                
             return RedirectToAction("CreateRecord");
-
         }
+
+
 
         [Authorize]
         public IActionResult Privacy()
