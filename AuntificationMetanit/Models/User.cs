@@ -13,12 +13,16 @@ namespace AuntificationMetanit.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)] 
         public Guid UserId { get; set; }
 
+        [Required]
         [DataType(DataType.EmailAddress)]
+        [EmailAddress]
         public string Email { get; set; }
 
 
+        [Required]
         [ScaffoldColumn(false)]
         [DataType(DataType.Password)]
+        
         public string Password { get; set; }
 
         public List<Record> Records { get; set; }

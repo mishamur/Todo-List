@@ -3,15 +3,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - AuntificationMetanit</title>
+    <title>@ViewData["Title"] - AuntificationMetanit</title> 
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 
 
     
-
-
-
     <link rel="stylesheet" href="~/amy/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/amy/css/bootstrap-datetimepicker.min.css" />
 
@@ -48,7 +45,7 @@
                 $(function () {
                     $('#datetimepicker1').datetimepicker({
                         locale: 'ru',
-                    
+
                     });
                     $('#datetimepicker2').datetimepicker({
                         locale: 'ru'
@@ -68,16 +65,19 @@
 
 
 
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/amy/js/jquery-3.2.1.min.js"></script>
+        <script src="~/amy/js/moment-with-locales.min.js"></script>
+        <script src="~/amy/js/bootstrap.min.js"></script>
+        <script src="~/amy/js/bootstrap-datetimepicker.min.js"></script>*@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
-  
-    <script src="~/amy/js/jquery-3.2.1.min.js"></script>
-    <script src="~/amy/js/moment-with-locales.min.js"></script>
-    <script src="~/amy/js/bootstrap.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/amy/js/bootstrap-datetimepicker.min.js"></script>
-
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

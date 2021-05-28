@@ -12,7 +12,7 @@
 <p>@ViewBag.IUser</p><br />
 
 <div>
-    <form method="get">
+    <form method="get" >
         <div class="form-inline form-group">
             <label class="control-label">Тема: </label>
             <input name="theme" class="form-control" />
@@ -36,7 +36,7 @@
         <th>Тип</th>
         <th>Тема</th>
         <th>
-            <a asp-action="Index" asp-controller="Home" asp-route-sortState="@ViewBag.DateSort">дата начала</a>
+            <a asp-action="Index" asp-controller="Home" asp-route-theme="@ViewBag.Theme" asp-route-sortState="@ViewBag.DateSort">дата начала</a>
         </th>
         <th>
             дата окончания

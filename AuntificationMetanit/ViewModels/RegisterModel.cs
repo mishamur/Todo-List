@@ -10,6 +10,8 @@ namespace AuntificationMetanit.ViewModels
     {
         [Required(ErrorMessage = "Не указан Email")]
         [DataType(DataType.EmailAddress)]
+
+        [EmailAddress(ErrorMessage = "Указан неверный email")]
         public string Email { get; set; }
 
         [Required(ErrorMessage ="Не указан пароль")]

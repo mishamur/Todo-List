@@ -45,6 +45,7 @@ namespace AuntificationMetanit.Controllers
                     records = records.Where(r => r.Theme.Contains(theme)).ToList<Record>();
                 }
 
+                ViewBag.Theme = theme;
                 return View(records);
             }
             return RedirectToAction("CreateRecord");
