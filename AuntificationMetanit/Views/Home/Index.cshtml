@@ -3,8 +3,6 @@
     ViewData["Title"] = "Home Page";
 }
 
-
-
 <a asp-action="CreateRecord" asp-controller="Home">Создать запись</a>
 <a asp-action="CreateMeeting" asp-controller="Home">Добавить встречу</a>
 <a asp-action="CreateCase" asp-controller="Home">Добавить дело</a>
@@ -49,8 +47,6 @@
         <tr>
             <td>@value.Discriminator</td>
             @value.GetInfo()
-            
-            
             
             <td>
                 <a asp-action="Edit" asp-controller="Home" asp-route-RecordId="@value.RecordId">Изменить</a>

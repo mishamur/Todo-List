@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuntificationMetanit", "AuntificationMetanit\AuntificationMetanit.csproj", "{2EF8AD3F-4EB6-4DCF-AAE6-A53F945B1599}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Electronic organizer", "AuntificationMetanit\Electronic organizer.csproj", "{2EF8AD3F-4EB6-4DCF-AAE6-A53F945B1599}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
