@@ -15,7 +15,6 @@ namespace AuntificationMetanit.Models
         [ScaffoldColumn(false)]
         public Guid UserId { get; set; }
 
-
         [Display(Name = "Тема")]
         public string Theme { get; set; }
 
@@ -24,7 +23,6 @@ namespace AuntificationMetanit.Models
 
         [ScaffoldColumn(false)]
 
-        [Display(Name = "Памятка")]
         public string Discriminator { get; set; }
         public override string ToString()
         {

@@ -7,13 +7,12 @@ namespace AuntificationMetanit.Models
     public class Meeting : Record
     {
         [Display(Name = "Место")]
-
         public string Place { get; set; }
-        [Display(Name = "Дата окончания")]
 
+        [Display(Name = "Дата окончания")]
         public DateTime DateEnd { get; set; }
 
-        [Display(Name = "Встреча")]
+        [ScaffoldColumn(false)]
         public new string Discriminator { get; set; }
 
         public override string ToString()

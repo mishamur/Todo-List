@@ -14,7 +14,8 @@ namespace AuntificationMetanit.Models
         public DbSet<Case> Cases { get; set; }
         public AuthContext(DbContextOptions<AuthContext> options) :  base(options)
         {
-           Database.EnsureCreated();
+         //   Database.EnsureDeleted();
+            Database.EnsureCreated();
 
         }
 

@@ -11,7 +11,7 @@ namespace AuntificationMetanit.Models
 
         public DateTime DateEnd { get; set; }
 
-        [Display(Name = "Дело")]
+        [ScaffoldColumn(false)]
         public new string Discriminator { get; set; }
 
         public override string ToString()
